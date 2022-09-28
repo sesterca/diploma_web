@@ -22,7 +22,7 @@ public class BaseTests {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        System.setProperty("host", "local");
+        System.getProperty("host", "local");
 
         WebConfiguration config = ConfigFactory.create(WebConfiguration.class);
 
