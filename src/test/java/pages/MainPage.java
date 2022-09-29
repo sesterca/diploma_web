@@ -16,6 +16,7 @@ public class MainPage {
     SelenideElement geoYesButton = $(byTagAndText("a", "Да"));
     SelenideElement geoChooseButton = $(byTagAndText("a", "Выбрать другой город"));
     SelenideElement geoLocationText = $x("//div[@class='open-delivery choose-caption delivery-input']/span/span");
+    SelenideElement geoLocationPopupCloseButton = $(".checking-location-dialog__close close-btn");
 
     ElementsCollection geoCities = $$(".lfs-item-link");
 
@@ -33,6 +34,7 @@ public class MainPage {
         return $$x("//a[span[text()='"+headerMenuSection+"']]/following-sibling::div[@class='expand-list b1']//span").texts();
     }
 
+    public void geoLocationPopupCloseButtonClick(){geoLocationPopupCloseButton.click();}
     public void geoYesButtonClick(){
         geoYesButton.click();
     }

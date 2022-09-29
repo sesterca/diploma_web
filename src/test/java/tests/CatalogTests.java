@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Condition;
 import enums.Endpoints;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.CatalogPage;
 import pages.FavoritesPage;
@@ -25,6 +26,7 @@ public class CatalogTests extends BaseTests {
     }
 
     @Test
+    @DisplayName("Проверка счетчика после добавления товара в Избранное")
     public void favoritesCounterIsNotNullAfterAddedProductToFavoriteTest(){
         step("Открыть раздел Косметика каталога", () -> {
             open(Endpoints.COSMETICS.getEndpoint());
@@ -39,6 +41,7 @@ public class CatalogTests extends BaseTests {
         });
     }
     @Test
+    @DisplayName("Проверка добавления в Избранное")
     public void addToFavoritesTest(){
         step("Открыть раздел Косметика каталога", () -> {
             open(Endpoints.COSMETICS.getEndpoint());

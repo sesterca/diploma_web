@@ -1,12 +1,7 @@
 package tests;
 
-import com.codeborne.selenide.Selenide;
-import enums.Endpoints;
 import enums.HeaderMenu;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 import pages.MainPage;
@@ -14,7 +9,8 @@ import pages.MainPage;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -44,6 +40,7 @@ public class MainPageUITest extends BaseTests {
     public void headerMenuClickTest(HeaderMenu headerMenu){
 
         step("Кликнуть по ${headerMenu} в хедере", () -> {
+            mainPage.geoLocationPopupCloseButtonClick();
             mainPage.headerMenuClick(headerMenu);
         });
         step("Проверить url открывшейся страницы", () -> {
@@ -83,6 +80,7 @@ public class MainPageUITest extends BaseTests {
     public void hoverHeaderMenuTest(String headerMenuSection, List<String>expectedMenuSectionItems){
 
         step("Навести курсор на пункт меню", () -> {
+            mainPage.geoLocationPopupCloseButtonClick();
             mainPage.headerMenuHover(headerMenuSection);
         });
         step("Проверить структуру подменю", () -> {
@@ -93,9 +91,11 @@ public class MainPageUITest extends BaseTests {
     }
 
     @Test
+    @DisplayName("Проверка автоопределения геопозиции")
     public void geoPositionAutoTest(){
 
         step("Получить авто геопозицию", () -> {
+            mainPage.geoLocationPopupCloseButtonClick();
             expectedLocation = mainPage.geoLocationAutoGetText();
         });
         step("Подтвердить автоопределенную гео кликом по Да", () -> {
@@ -138,6 +138,7 @@ public class MainPageUITest extends BaseTests {
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
     })
     @ParameterizedTest
+    @DisplayName("Проверка товаров отображения только товаров со скидкой в Распродаже")
     public void saleSectionGoodsOnSaleOnlyTest(int number){
 
         step("Скроллить страницу до заголовка Распродажа", () -> {
@@ -167,6 +168,7 @@ public class MainPageUITest extends BaseTests {
             "Bite"
     })
     @ParameterizedTest
+    @DisplayName("Проверка загрузки логотипов брендов")
     public void loadingLogoBrandsImagesTest(String logoName){
 
         step("Скроллить страницу до иконок брендов", () -> {
@@ -179,15 +181,17 @@ public class MainPageUITest extends BaseTests {
         });
     }
 
+    @Disabled
     @Test
+    @DisplayName("Проверка отсутствия ошибок в консоли браузера")
     public void noErrorsInBrowserConsoleTest(){
 
         step("Получить логи консоли", () -> {
-//        String consoleLogs = DriverUtils.getConsoleLogs();
+        String consoleLogs = DriverUtils.getConsoleLogs();
         });
         step("Проверить отсутствие в консоли ошибок уровня SEVERE", () -> {
             String errorText = "SEVERE";
-//        assertThat(consoleLogs).doesNotContain(errorText);
+        assertThat(consoleLogs).doesNotContain(errorText);
         });
     }
 }

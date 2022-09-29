@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.MainPage;
@@ -19,6 +20,7 @@ public class MainPageWithApiTest extends BaseTests {
     })
 
     @ParameterizedTest
+    @DisplayName("Проверка загрузки изображений в слайдере")
     public void loadingBannerPictureTest(int number){
         step("Открыть главную страницу", () -> {
             open("/");
