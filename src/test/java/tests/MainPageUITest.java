@@ -24,7 +24,7 @@ public class MainPageUITest extends BaseTests {
     @BeforeEach
     public void openMainPage(){
         step("Открыть главную страницу", () -> {
-            open();
+            open("/");
             executeJavaScript("$('#loading').remove");
             executeJavaScript("$('#selectDelivery').remove()");
         });
