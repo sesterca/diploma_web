@@ -1,6 +1,9 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Selectors.byClassName;
 import static com.codeborne.selenide.Selectors.byId;
@@ -14,7 +17,7 @@ public class CatalogPage {
     public SelenideElement favoritesCounter = $(byId("topFavCount"));
     public SelenideElement productName = $(byClassName("name"));
 
-    public void geoLocationPopupCloseButtonClick(){geoLocationPopupCloseButton.click();}
+    public void geoLocationPopupCloseButtonClick(){geoLocationPopupCloseButton.shouldBe(Condition.visible, Duration.ofSeconds(2000)).click();}
 
     public void favoriteClick(){
         favorite.click();

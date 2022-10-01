@@ -22,13 +22,15 @@ public class BaseTests {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        System.getProperty("host", "local");
+        System.getProperty("host", "remote");
 
-        WebConfiguration config = ConfigFactory.create(WebConfiguration.class, System.getProperties());
+        WebConfiguration config = ConfigFactory.create(WebConfiguration.class);
 
         String login = config.login();
         String password = config.password();
-        String baseUrl = System.getProperty("url");
+        String remote = config.remoteUrl();
+
+        String baseUrl = System.getProperty("url", "https://4fresh.ru/");
 
         Configuration.baseUrl = baseUrl;
         Configuration.browser = System.getProperty("browser", "CHROME");
@@ -38,7 +40,7 @@ public class BaseTests {
         RestAssured.baseURI = baseUrl;
 
         if(Objects.equals("host", "remote")) {
-        Configuration.remote = "https://" + login + ":" + password + "@" + config.remoteUrl() + "/wd/hub";}
+        Configuration.remote = "https://" + login + ":" + password + "@" + remote + "/wd/hub";}
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);

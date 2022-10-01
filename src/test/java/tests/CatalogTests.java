@@ -7,7 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.CatalogPage;
 import pages.FavoritesPage;
-import pages.MainPage;
 
 import java.time.Duration;
 
