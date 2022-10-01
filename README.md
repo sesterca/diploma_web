@@ -1,15 +1,19 @@
 # diploma_web
 
 # Тестирование UI сайта компании
-[![naumen](https://user-images.githubusercontent.com/71780020/172861017-4db52962-4e9d-4a63-bf61-fed7e5bfbb52.png)](https://www.naumen.ru/)
+[<<img src="image/4fresh_logo.png">](https://4fresh.ru/)
 
->*Группа компаний NAUMEN — российский вендор ПО и облачных сервисов, технологический партнер в цифровой трансформации для компаний и органов власти [(c)](https://www.naumen.ru/company/).* 
+>*[4fresh](https://4fresh.ru/about/why/) Первый мультибрендовый интернет-магазин натуральной косметики и органической косметики ручной работы.* 
 
 ### В проекте протестировано :mag_right:
-* переход на главную страницу при клике по логотипу в хедере;
-* структура меню хедера;
-* переходы по пунктам меню хедера;
-* ховер при наведении курсора на меню.
+* Переход к страницам меню хедера
+* Показ подменю и его структура при наведении курсора на пункт меню хедера
+* Проверка автоопределения геопозиции
+* Проверка отображения только товаров со скидкой в блоке Распродажа
+* Проверка загрузки логотипов брендов
+* Проверка загрузки изображений в слайдере
+* Проверка счетчика после добавления товара в Избранное
+* Проверка добавления в Избранное 
 
 ### В проекте использованы :gear:
 <img src="image/Java.svg" width="60"><img src="image/JUnit5.svg" width="60"><img src="image/Gradle.svg" width="60"><img src="image/Intelij_IDEA.svg" width="60"><img src="image/Selenide.svg" width="60"><img src="image/Selenoid.svg" width="60"><img src="image/GitHub.svg" width="60"><img src="image/Jenkins.svg" width="60"><img src="image/Allure_Report.svg" width="60"><img src="image/Telegram.svg" width="60">
@@ -17,15 +21,14 @@
 ## Для запуска тестов
 ### локально в терминале :computer:
 ```
-gradle clean test
+gradle clean test -Dhost=local
 ```
 ### удаленно в Jenkins :desktop_computer:
 ```
-gradle clean test
+gradle clean test -Dhost=remote
 -Dbrowser=${BROWSER}
 -DbrowserSize=${BROWSER_SIZE}
 -DbaseUrl="${BASE_URL}"
--Dremote="${REMOTE}"
 ```
 [Пример сборки](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website/13/)
 Открыть [Jenkins](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website), в меню слева выбрать ```Собрать с параметрами```
@@ -36,7 +39,7 @@ gradle clean test
 <details><summary>REMOTE</summary><p>Адрес удаленного сервера, на котором будут запускаться тесты (по умолчанию <strong>selenoid.autotests.cloud</strong>)</p></details>
 
 ## Для просмотра отчета
-Под названием проекта кликнуть [<img src="image/Allure_Report.svg" width="50">](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website/allure/)
+Под названием проекта кликнуть [<img src="image/Allure_Report.svg" width="30">](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website/allure/)
 #### Главный экран отчета
 <img src="image/allure trend.jpg">
 
