@@ -25,8 +25,7 @@ public class MainPageWithApiTest extends BaseTests {
     public void loadingBannerPictureTest(int number){
         step("Открыть главную страницу", () -> {
             open("/");
-            executeJavaScript("$('#loading').remove");
-            executeJavaScript("$('#selectDelivery').remove()");
+            mainPage.closePopUp();
         });
         step("Получить номер слайда в баннере", () -> {
             pictureLink = mainPage.getBannerPictureLink(number);

@@ -1,14 +1,17 @@
 package tests;
 
+import com.codeborne.selenide.Condition;
 import enums.HeaderMenu;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 import pages.MainPage;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static io.qameta.allure.Allure.step;
@@ -24,9 +27,8 @@ public class MainPageUITest extends BaseTests {
     @BeforeEach
     public void openMainPage(){
         step("Открыть главную страницу", () -> {
-            open("/");
-            executeJavaScript("$('#loading').remove");
-            executeJavaScript("$('#selectDelivery').remove()");
+            open(baseUrl);
+            mainPage.closePopUp();
         });
     }
 

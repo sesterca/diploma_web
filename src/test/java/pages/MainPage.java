@@ -5,6 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import enums.HeaderMenu;
 
+import java.time.Duration;
 import java.util.*;
 
 import static com.codeborne.selenide.Selectors.*;
@@ -74,4 +75,10 @@ public class MainPage {
     }
     public void logoImagesScrollTo(){$(byTagAndText("span", "Популярные бренды")).scrollTo();}
     public boolean logoImageIsLoaded(String logoName){return $x("//div[@class='row main-bottom-info-block']//img[@alt='"+logoName+"']").isImage();}
+
+    public void closePopUp(){
+        executeJavaScript("$('#loading').remove");
+        $(".checking-location-dialog__content").shouldNotBe(Condition.visible, Duration.ofSeconds(120));
+        executeJavaScript("$('#selectDelivery').remove()");
+    }
 }

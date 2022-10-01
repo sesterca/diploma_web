@@ -26,8 +26,7 @@ public class CatalogTests extends BaseTests {
     public void openCatalogPage(){
         step("Открыть раздел Косметика каталога", () -> {
             open("/" + Endpoints.COSMETICS.getEndpoint());
-            executeJavaScript("$('#loading').remove");
-            executeJavaScript("$('#selectDelivery').remove()");
+            catalogPage.closePopUp();
         });
     }
 
