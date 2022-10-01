@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Condition;
 import enums.Endpoints;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.CatalogPage;
@@ -10,6 +11,7 @@ import pages.FavoritesPage;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,6 +22,14 @@ public class CatalogTests extends BaseTests {
     FavoritesPage favoritesPage = new FavoritesPage();
     String expectedFavoriteProductName;
 
+    @BeforeEach
+    public void openCatalogPage(){
+        step("Открыть раздел Косметика каталога", () -> {
+            open(baseUrl + Endpoints.COSMETICS.getEndpoint());
+            catalogPage.geoLocationPopupCloseButtonClick();
+        });
+    }
+
     @AfterEach
     public void tearDown(){
         closeWebDriver();
@@ -28,10 +38,7 @@ public class CatalogTests extends BaseTests {
     @Test
     @DisplayName("Проверка счетчика после добавления товара в Избранное")
     public void favoritesCounterIsNotNullAfterAddedProductToFavoriteTest(){
-        step("Открыть раздел Косметика каталога", () -> {
-            open(Endpoints.COSMETICS.getEndpoint());
-            catalogPage.geoLocationPopupCloseButtonClick();
-        });
+
         step("Кликнуть по иконке сердечка", () -> {
             catalogPage.favoriteClick();
         });
@@ -44,9 +51,7 @@ public class CatalogTests extends BaseTests {
     @Test
     @DisplayName("Проверка добавления в Избранное")
     public void addToFavoritesTest(){
-        step("Открыть раздел Косметика каталога", () -> {
-            open(Endpoints.COSMETICS.getEndpoint());
-        });
+
         step("Кликнуть по иконке сердечка", () -> {
             catalogPage.favoriteClick();
         });

@@ -9,6 +9,7 @@ import pages.MainPage;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static io.qameta.allure.Allure.step;
@@ -24,7 +25,7 @@ public class MainPageUITest extends BaseTests {
     @BeforeEach
     public void openMainPage(){
         step("Открыть главную страницу", () -> {
-            open("/");
+            open(baseUrl);
             mainPage.geoLocationPopupCloseButtonClick();
         });
     }
