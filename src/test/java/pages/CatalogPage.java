@@ -8,9 +8,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class CatalogPage {
 
+    SelenideElement geoLocationPopupCloseButton = $(".checking-location-dialog__close close-btn");
+
     public SelenideElement favorite = $(byClassName("favourite"));
     public SelenideElement favoritesCounter = $(byId("topFavCount"));
     public SelenideElement productName = $(byClassName("name"));
+
+    public void geoLocationPopupCloseButtonClick(){geoLocationPopupCloseButton.click();}
 
     public void favoriteClick(){
         favorite.click();

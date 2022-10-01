@@ -9,8 +9,7 @@ import pages.MainPage;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -26,6 +25,7 @@ public class MainPageUITest extends BaseTests {
     public void openMainPage(){
         step("Открыть главную страницу", () -> {
             open("/");
+            mainPage.geoLocationPopupCloseButtonClick();
         });
     }
 
@@ -40,7 +40,6 @@ public class MainPageUITest extends BaseTests {
     public void headerMenuClickTest(HeaderMenu headerMenu){
 
         step("Кликнуть по ${headerMenu} в хедере", () -> {
-            mainPage.geoLocationPopupCloseButtonClick();
             mainPage.headerMenuClick(headerMenu);
         });
         step("Проверить url открывшейся страницы", () -> {
@@ -80,7 +79,6 @@ public class MainPageUITest extends BaseTests {
     public void hoverHeaderMenuTest(String headerMenuSection, List<String>expectedMenuSectionItems){
 
         step("Навести курсор на пункт меню", () -> {
-            mainPage.geoLocationPopupCloseButtonClick();
             mainPage.headerMenuHover(headerMenuSection);
         });
         step("Проверить структуру подменю", () -> {
@@ -95,7 +93,6 @@ public class MainPageUITest extends BaseTests {
     public void geoPositionAutoTest(){
 
         step("Получить авто геопозицию", () -> {
-            mainPage.geoLocationPopupCloseButtonClick();
             expectedLocation = mainPage.geoLocationAutoGetText();
         });
         step("Подтвердить автоопределенную гео кликом по Да", () -> {
@@ -178,20 +175,6 @@ public class MainPageUITest extends BaseTests {
         step("Проверить наличие иконки для ${logoName}", () -> {
             assertThat(mainPage.logoImageIsLoaded(logoName))
                     .isTrue();
-        });
-    }
-
-    @Disabled
-    @Test
-    @DisplayName("Проверка отсутствия ошибок в консоли браузера")
-    public void noErrorsInBrowserConsoleTest(){
-
-        step("Получить логи консоли", () -> {
-        String consoleLogs = DriverUtils.getConsoleLogs();
-        });
-        step("Проверить отсутствие в консоли ошибок уровня SEVERE", () -> {
-            String errorText = "SEVERE";
-        assertThat(consoleLogs).doesNotContain(errorText);
         });
     }
 }

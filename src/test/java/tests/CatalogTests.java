@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.CatalogPage;
 import pages.FavoritesPage;
+import pages.MainPage;
 
 import java.time.Duration;
 
@@ -30,6 +31,7 @@ public class CatalogTests extends BaseTests {
     public void favoritesCounterIsNotNullAfterAddedProductToFavoriteTest(){
         step("Открыть раздел Косметика каталога", () -> {
             open(Endpoints.COSMETICS.getEndpoint());
+            catalogPage.geoLocationPopupCloseButtonClick();
         });
         step("Кликнуть по иконке сердечка", () -> {
             catalogPage.favoriteClick();

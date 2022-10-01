@@ -24,18 +24,18 @@ public class BaseTests {
 
         System.getProperty("host", "local");
 
-        WebConfiguration config = ConfigFactory.create(WebConfiguration.class);
+        WebConfiguration config = ConfigFactory.create(WebConfiguration.class, System.getProperties());
 
         String login = config.login();
         String password = config.password();
+        String baseUrl = System.getProperty("url");
 
-        Configuration.baseUrl = config.baseUrl();
-        Configuration.browser = config.browser();
-        Configuration.browserVersion = config.browserVersion();
-        Configuration.browserSize = config.browserSize();
+        Configuration.baseUrl = baseUrl;
+        Configuration.browser = System.getProperty("browser", "CHROME");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browserPosition = "0x0";
 
-        RestAssured.baseURI = config.baseUrl();
+        RestAssured.baseURI = baseUrl;
 
         if(Objects.equals("host", "remote")) {
         Configuration.remote = "https://" + login + ":" + password + "@" + config.remoteUrl() + "/wd/hub";}
