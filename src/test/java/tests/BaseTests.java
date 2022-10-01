@@ -24,22 +24,21 @@ public class BaseTests {
 
         System.getProperty("host", "remote");
 
-        WebConfiguration config = ConfigFactory.create(WebConfiguration.class);
-
-        String login = config.login();
-        String password = config.password();
-        String remote = config.remoteUrl();
-
         String baseUrl = System.getProperty("url", "https://4fresh.ru/");
 
         Configuration.baseUrl = baseUrl;
+        RestAssured.baseURI = baseUrl;
         Configuration.browser = System.getProperty("browser", "CHROME");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browserPosition = "0x0";
 
-        RestAssured.baseURI = baseUrl;
+        WebConfiguration config = ConfigFactory.create(WebConfiguration.class);
+        String login = config.login();
+        String password = config.password();
+        String remote = config.remoteUrl();
 
         if(Objects.equals("host", "remote")) {
+
         Configuration.remote = "https://" + login + ":" + password + "@" + remote + "/wd/hub";}
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
