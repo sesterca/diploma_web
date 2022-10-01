@@ -1,12 +1,12 @@
 # diploma_web
 
 # Тестирование UI сайта компании
-[<<img src="image/4fresh_logo.png">](https://4fresh.ru/)
+[<img src="image/4fresh_logo.png">](https://4fresh.ru/)
 
->*[4fresh](https://4fresh.ru/about/why/) Первый мультибрендовый интернет-магазин натуральной косметики и органической косметики ручной работы.* 
+*[4fresh](https://4fresh.ru/about/why/) Первый мультибрендовый интернет-магазин натуральной косметики и органической косметики ручной работы.* 
 
 ### В проекте протестировано :mag_right:
-* Переход к страницам меню хедера
+* Переход по пунктам меню хедера
 * Показ подменю и его структура при наведении курсора на пункт меню хедера
 * Проверка автоопределения геопозиции
 * Проверка отображения только товаров со скидкой в блоке Распродажа
@@ -30,8 +30,8 @@ gradle clean test -Dhost=remote
 -DbrowserSize=${BROWSER_SIZE}
 -DbaseUrl="${BASE_URL}"
 ```
-[Пример сборки](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website/13/)
-Открыть [Jenkins](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website), в меню слева выбрать ```Собрать с параметрами```
+[Пример сборки](https://jenkins.autotests.cloud/job/012-sesterca-diploma_web/16/)
+Открыть [Jenkins](https://jenkins.autotests.cloud/job/012-sesterca-diploma_web/), в меню слева выбрать ```Собрать с параметрами```
 #### Параметры сборки
 <details><summary>BROWSER</summary><p>Браузер, в котором будут выполняться тесты (по умолчанию <strong>Chrome</strong>)</p></details> 
 <details><summary>BROWSER_SIZE</summary><p>Размер окна браузера (по умолчанию <strong>1920х1080</strong>)</p></details>
@@ -39,7 +39,7 @@ gradle clean test -Dhost=remote
 <details><summary>REMOTE</summary><p>Адрес удаленного сервера, на котором будут запускаться тесты (по умолчанию <strong>selenoid.autotests.cloud</strong>)</p></details>
 
 ## Для просмотра отчета
-Под названием проекта кликнуть [<img src="image/Allure_Report.svg" width="30">](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website/allure/)
+Под названием проекта кликнуть [<img src="image/Allure_Report.svg" width="10">](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website/allure/)
 #### Главный экран отчета
 <img src="image/allure trend.jpg">
 
