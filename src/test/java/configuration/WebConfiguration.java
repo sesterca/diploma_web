@@ -11,6 +11,6 @@ public interface WebConfiguration extends org.aeonbits.owner.Config {
     @Key("password")
     String password();
 
-    @Key("remote.url")
+    @Key("remote")
     String remoteUrl();
 }

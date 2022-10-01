@@ -7,6 +7,7 @@ import helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
+import org.assertj.core.error.ShouldStartWith;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -22,7 +23,7 @@ public class BaseTests {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        System.getProperty("host", "remote");
+        String host = System.getProperty("host", "remote");
 
         String baseUrl = System.getProperty("url", "https://4fresh.ru/");
 
@@ -32,29 +33,28 @@ public class BaseTests {
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browserPosition = "0x0";
 
-        WebConfiguration config = ConfigFactory.create(WebConfiguration.class);
-        String login = config.login();
-        String password = config.password();
-        String remote = config.remoteUrl();
+        if(host.equals("remote")) {
+            WebConfiguration config = ConfigFactory.create(WebConfiguration.class, System.getProperties());
+            String login = config.login();
+            String password = config.password();
+            String remote = config.remoteUrl();
 
-        if(Objects.equals("host", "remote")) {
+            Configuration.remote = "https://" + login + ":" + password + "@" + remote + "/wd/hub";
 
-        Configuration.remote = "https://" + login + ":" + password + "@" + remote + "/wd/hub";}
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities = capabilities;
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+            Configuration.browserCapabilities = capabilities;
+        }
     }
 
     @AfterEach
     void addAttachments(){
 
-        if(Objects.equals("host", "remote")) {
         Attachments.screenshotAs("Screenshot");
         Attachments.pageSource();
         Attachments.browserConsoleLogs();
-        Attachments.addVideo();}
+        Attachments.addVideo();
 
         closeWebDriver();
     }
