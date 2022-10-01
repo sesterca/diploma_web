@@ -26,7 +26,6 @@ public class MainPageUITest extends BaseTests {
     public void openMainPage(){
         step("Открыть главную страницу", () -> {
             open(baseUrl);
-            mainPage.geoLocationPopupCloseButtonClick();
         });
     }
 

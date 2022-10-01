@@ -26,7 +26,6 @@ public class CatalogTests extends BaseTests {
     public void openCatalogPage(){
         step("Открыть раздел Косметика каталога", () -> {
             open(baseUrl + Endpoints.COSMETICS.getEndpoint());
-            catalogPage.geoLocationPopupCloseButtonClick();
         });
     }
 

@@ -24,8 +24,7 @@ public class BaseTests {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         String host = System.getProperty("host", "remote");
-
-        String baseUrl = System.getProperty("url", "https://4fresh.ru/");
+        String baseUrl = System.getProperty("url", "https://4fresh.ru");
 
         Configuration.baseUrl = baseUrl;
         RestAssured.baseURI = baseUrl;
@@ -33,12 +32,12 @@ public class BaseTests {
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browserPosition = "0x0";
 
-        if(host.equals("remote")) {
-            WebConfiguration config = ConfigFactory.create(WebConfiguration.class, System.getProperties());
-            String login = config.login();
-            String password = config.password();
-            String remote = config.remoteUrl();
+        WebConfiguration config = ConfigFactory.create(WebConfiguration.class);
+        String login = config.login();
+        String password = config.password();
+        String remote = config.remoteUrl();
 
+        if(host.equals("remote")) {
             Configuration.remote = "https://" + login + ":" + password + "@" + remote + "/wd/hub";
 
             DesiredCapabilities capabilities = new DesiredCapabilities();

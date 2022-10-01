@@ -3,21 +3,22 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
-import java.time.Duration;
-
 import static com.codeborne.selenide.Selectors.byClassName;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class CatalogPage {
 
-    SelenideElement geoLocationPopupCloseButton = $(".checking-location-dialog__close close-btn");
+    SelenideElement geoLocationPopupCloseButton = $(".change-delivery-dialog__close close-btn desktop");
 
     public SelenideElement favorite = $(byClassName("favourite"));
     public SelenideElement favoritesCounter = $(byId("topFavCount"));
     public SelenideElement productName = $(byClassName("name"));
 
-    public void geoLocationPopupCloseButtonClick(){geoLocationPopupCloseButton.shouldBe(Condition.visible, Duration.ofSeconds(2000)).click();}
+    public void geoLocationPopupCloseButtonClick(){
+        geoLocationPopupCloseButton.click();
+    }
 
     public void favoriteClick(){
         favorite.click();
