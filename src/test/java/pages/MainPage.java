@@ -16,7 +16,6 @@ public class MainPage {
     SelenideElement geoYesButton = $(byTagAndText("a", "Да"));
     SelenideElement geoChooseButton = $(byTagAndText("a", "Выбрать другой город"));
     SelenideElement geoLocationText = $x("//div[@class='open-delivery choose-caption delivery-input']/span/span");
-    SelenideElement geoLocationPopupCloseButton = $x("//div[@id='selectDelivery']//span[@title='Закрыть']");
 
     ElementsCollection geoCities = $$(".lfs-item-link");
 
@@ -34,7 +33,6 @@ public class MainPage {
         return $$x("//a[span[text()='"+headerMenuSection+"']]/following-sibling::div[@class='expand-list b1']//span").texts();
     }
 
-    public void geoLocationPopupCloseButtonClick(){geoLocationPopupCloseButton.click();}
     public void geoYesButtonClick(){
         geoYesButton.click();
     }
@@ -63,9 +61,8 @@ public class MainPage {
         saleHeading.scrollTo();
     }
 
-    public String getBannerPictureLink(int number){return $x(
-            "(//div[@class='main-banner swiper-container-initialized swiper-container-horizontal']" +
-            "//div[@class='swiper-slide']//picture/source[2])["+number+"]").getAttribute("srcset");}
+    public String getBannerPictureLink(int number){return $x("(//div[@class='swiper-slide'])["+number+"]//source")
+            .getAttribute("srcset");}
 
     public String getGoodsOnSaleId(int number){
         return $x("(//div[@class='goodsTab Bestsellers']//div[@class='product_card'])["+number+"]").getAttribute("id");

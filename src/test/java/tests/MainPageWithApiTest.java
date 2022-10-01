@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.MainPage;
 
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.baseURI;
@@ -16,7 +17,7 @@ public class MainPageWithApiTest extends BaseTests {
     String pictureLink;
 
     @ValueSource(ints = {
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+            1, 2, 3, 4, 5, 6, 7, 8, 9
     })
 
     @ParameterizedTest
@@ -24,6 +25,8 @@ public class MainPageWithApiTest extends BaseTests {
     public void loadingBannerPictureTest(int number){
         step("Открыть главную страницу", () -> {
             open("/");
+            executeJavaScript("$('#loading').remove");
+            executeJavaScript("$('#selectDelivery').remove()");
         });
         step("Получить номер слайда в баннере", () -> {
             pictureLink = mainPage.getBannerPictureLink(number);

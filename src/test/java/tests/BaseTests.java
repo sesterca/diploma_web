@@ -7,12 +7,9 @@ import helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
-import org.assertj.core.error.ShouldStartWith;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.util.Objects;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -23,7 +20,7 @@ public class BaseTests {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        String host = System.getProperty("host", "remote");
+        String host = System.getProperty("host", "local");
         String baseUrl = System.getProperty("url", "https://4fresh.ru");
 
         Configuration.baseUrl = baseUrl;
@@ -50,11 +47,11 @@ public class BaseTests {
     @AfterEach
     void addAttachments(){
 
-        Attachments.screenshotAs("Screenshot");
-        Attachments.pageSource();
-        Attachments.browserConsoleLogs();
-        Attachments.addVideo();
+            Attachments.screenshotAs("Screenshot");
+            Attachments.pageSource();
+            Attachments.browserConsoleLogs();
+            Attachments.addVideo();
 
-        closeWebDriver();
+            closeWebDriver();
     }
 }
