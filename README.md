@@ -45,7 +45,7 @@ gradle clean test -Dhost=remote
 <img src="image/Web_allure_testsuite.jpg">
 
 #### Пример выполнения теста
-![test_pass](img src="image/Web_test_video.gif")
+<img src="image/Web_test_video.gif">
 
 ## Для уведомления о результатах тестирования
 <img src="image/Web_telegram_notification.jpg">
