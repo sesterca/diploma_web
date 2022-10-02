@@ -6,7 +6,7 @@
 *[4fresh](https://4fresh.ru/about/why/) Первый мультибрендовый интернет-магазин натуральной косметики и органической косметики ручной работы.* 
 
 ### В проекте протестировано :mag_right:
-* Переход по пунктам меню хедера
+* Переходы по пунктам меню хедера
 * Показ подменю и его структура при наведении курсора на пункт меню хедера
 * Проверка автоопределения геопозиции
 * Проверка отображения только товаров со скидкой в блоке Распродажа
@@ -39,7 +39,7 @@ gradle clean test -Dhost=remote
 <details><summary>REMOTE</summary><p>Адрес удаленного сервера, на котором будут запускаться тесты (по умолчанию <strong>selenoid.autotests.cloud</strong>)</p></details>
 
 ## Для просмотра отчета
-Под названием проекта кликнуть [<img src="image/Allure_Report.svg" width="10">](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website/allure/)
+Под названием проекта кликнуть [<img src="image/Allure_Report.svg" width="20">](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website/allure/)
 #### Главный экран отчета
 <img src="image/allure trend.jpg">
 
