@@ -37,7 +37,7 @@ gradle clean test -Dhost=remote
 <details><summary>REMOTE</summary><p>Адрес удаленного сервера, на котором будут запускаться тесты (по умолчанию <strong>selenoid.autotests.cloud</strong>)</p></details>
 
 ## Для просмотра отчета
-Под названием проекта кликнуть [<img src="image/Allure_Report.svg" width="20">](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website/allure/)
+Под названием проекта кликнуть [<img src="image/Allure_Report.svg" width="20">]
 #### Главный экран отчета
 <img src="image/Web_allure_main.jpg">
 
