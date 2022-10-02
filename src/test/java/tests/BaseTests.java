@@ -15,12 +15,14 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class BaseTests {
 
+    static String host;
+
     @BeforeAll
     public static void setUp(){
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        String host = System.getProperty("host", "local");
+        host = System.setProperty("host", "local");
         String baseUrl = System.getProperty("url", "https://4fresh.ru");
 
         Configuration.baseUrl = baseUrl;
@@ -47,11 +49,12 @@ public class BaseTests {
     @AfterEach
     void addAttachments(){
 
+        if(host.equals("remote")) {
             Attachments.screenshotAs("Screenshot");
             Attachments.pageSource();
             Attachments.browserConsoleLogs();
             Attachments.addVideo();
-
+        }
             closeWebDriver();
     }
 }
