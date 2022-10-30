@@ -1,9 +1,7 @@
-# diploma_web
-
 # Тестирование UI сайта компании
 [<img src="image/4fresh_logo.png">](https://4fresh.ru/)
 
-*[4fresh](https://4fresh.ru/about/why/) Первый мультибрендовый интернет-магазин натуральной косметики и органической косметики ручной работы.* 
+*[4fresh](https://4fresh.ru/about/why/) первый мультибрендовый интернет-магазин натуральной косметики и органической косметики ручной работы.* 
 
 ### В проекте протестировано :mag_right:
 * Переходы по пунктам меню хедера
@@ -35,19 +33,19 @@ gradle clean test -Dhost=remote
 #### Параметры сборки
 <details><summary>BROWSER</summary><p>Браузер, в котором будут выполняться тесты (по умолчанию <strong>Chrome</strong>)</p></details> 
 <details><summary>BROWSER_SIZE</summary><p>Размер окна браузера (по умолчанию <strong>1920х1080</strong>)</p></details>
-<details><summary>BASE_URL</summary><p>Адрес тестового окружения (по умолчанию <strong>https://www.naumen.ru/</strong>)</p></details>
+<details><summary>BASE_URL</summary><p>Адрес тестового окружения (по умолчанию <strong>[https://4fresh.ru/]</strong>)</p></details>
 <details><summary>REMOTE</summary><p>Адрес удаленного сервера, на котором будут запускаться тесты (по умолчанию <strong>selenoid.autotests.cloud</strong>)</p></details>
 
 ## Для просмотра отчета
-Под названием проекта кликнуть [<img src="image/Allure_Report.svg" width="20">](https://jenkins.autotests.cloud/job/012-sesterca-u13_employee_naumen_website/allure/)
+Под названием проекта кликнуть [<img src="image/Allure_Report.svg" width="20">]
 #### Главный экран отчета
-<img src="image/allure trend.jpg">
+<img src="image/Web_allure_main.jpg">
 
 #### Экран подробного просмотра тестов тест-сьюта
-<img src="image/allure tests.jpg">
+<img src="image/Web_allure_testsuite.jpg">
 
 #### Пример выполнения теста
-![test_pass](https://user-images.githubusercontent.com/71780020/173231412-7821c04d-3a8f-4513-bd02-c8eaa5179f64.gif)
+<img src="image/Web_test_video.gif">
 
 ## Для уведомления о результатах тестирования
-<img src="image/telegram report.jpg">
+<img src="image/Web_telegram_notification.jpg">
