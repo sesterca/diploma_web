@@ -1,8 +1,7 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import configuration.WebConfiguration;
+import configuration.Configuration;
 import helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
@@ -22,27 +21,27 @@ public class BaseTests {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        host = System.setProperty("host", "local");
+        host = System.getProperty("host", "local");
         String baseUrl = System.getProperty("url", "https://4fresh.ru");
 
-        Configuration.baseUrl = baseUrl;
+        com.codeborne.selenide.Configuration.baseUrl = baseUrl;
         RestAssured.baseURI = baseUrl;
-        Configuration.browser = System.getProperty("browser", "CHROME");
-        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-        Configuration.browserPosition = "0x0";
+        com.codeborne.selenide.Configuration.browser = System.getProperty("browser", "CHROME");
+        com.codeborne.selenide.Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        com.codeborne.selenide.Configuration.browserPosition = "0x0";
 
-        WebConfiguration config = ConfigFactory.create(WebConfiguration.class);
+        Configuration config = ConfigFactory.create(Configuration.class);
         String login = config.login();
         String password = config.password();
         String remote = config.remoteUrl();
 
         if(host.equals("remote")) {
-            Configuration.remote = "https://" + login + ":" + password + "@" + remote + "/wd/hub";
+            com.codeborne.selenide.Configuration.remote = "https://" + login + ":" + password + "@" + remote + "/wd/hub";
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
-            Configuration.browserCapabilities = capabilities;
+            com.codeborne.selenide.Configuration.browserCapabilities = capabilities;
         }
     }
 

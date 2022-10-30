@@ -11,8 +11,8 @@ public class FavoritesPage {
 
     public String favoriteProductGetName(){
        String name = favoriteProductName.getText();
-       String brand = $x("//div[@id='personalFavList']//p[@class='caption']/a").getAttribute("data-brand");
-       String volume = $x("//div[@id='personalFavList']//span[@class='black-color']").getText();
+       String brand = $("div#personalFavList p.caption a").getAttribute("data-brand");
+       String volume = $("div#personalFavList span.black-color").getText();
        return name +" "+ brand +", "+ volume;
     }
 }

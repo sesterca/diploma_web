@@ -1,7 +1,9 @@
 package helpers;
 
 import com.codeborne.selenide.Selenide;
+import configuration.Configuration;
 import io.qameta.allure.Attachment;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -45,7 +47,10 @@ public class Attachments {
         }
 
         public static URL getVideoUrl(String sessionId) {
-            String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId + ".mp4";
+
+            Configuration config = ConfigFactory.create(Configuration.class);
+
+            String videoUrl = config.videoUrl() + sessionId + ".mp4";
 
             try {
                 return new URL(videoUrl);
